@@ -7,5 +7,5 @@ https://gyazo.com/285832732601ac81dcbdcd99042fd05f
 
 ## Iteration 2 - "Login" and Create Messages
 
-#### REPLACE THIS HEADER WITH YOUR ITERATION 2 REQUEST/RESPONSE IMAGE
-#### REPLACE THIS HEADER WITH YOUR ITERATION 2 WIREFRAME
+https://gyazo.com/756b0e24b35796ae71b9066b40a9019a
+https://gyazo.com/cea342ca90bf1f60e97635ae78f9ebfb

@@ -81,5 +81,49 @@ namespace MvcMessageLoggerTests
 
             Assert.Contains("jdoe123", html);
         }
+
+        [Fact]
+        public async Task Details_ReturnsViewWithUserAndMessages()
+        {
+            var context = GetDbContext();
+
+            context.Users.Add(new User { Name = "John Doe", Username = "jdoe123" });
+            context.Users.Add(new User { Name = "Jane Doe", Username = "jdoe456" });
+            context.SaveChanges();
+
+            var client = _factory.CreateClient();
+
+            var response = await client.GetAsync("/users/details/2");
+            var html = await response.Content.ReadAsStringAsync();
+
+            response.EnsureSuccessStatusCode();
+            Assert.Contains("jdoe456", html);
+            Assert.Contains("Jane Doe", html);
+            Assert.DoesNotContain("jdoe123", html);
+            Assert.DoesNotContain("John Doe", html);
+        }
+
+        [Fact]
+        public async Task MessageIndexPost_CreatesMessageForDetailedUser()
+        {
+            var client = _factory.CreateClient();
+            var context = GetDbContext();
+
+            context.Users.Add(new User { Name = "John Doe", Username = "jdoe123" });
+            context.SaveChanges();
+            var addItemFormData = new Dictionary<string, string>
+            {
+                {"Content", "this is a message" },
+            };
+
+            var response = await client.PostAsync($"/users/details/1/message", new FormUrlEncodedContent(addItemFormData));
+            var html = await response.Content.ReadAsStringAsync();
+
+            response.EnsureSuccessStatusCode();
+
+            Assert.Contains("this is a message", html);
+            Assert.Contains("<form method=\"post\" action=\"/users/details/1/message\">", html);
+            Assert.Contains("<button type=\"submit\">Add Message</button>", html);
+        }
     }
 }

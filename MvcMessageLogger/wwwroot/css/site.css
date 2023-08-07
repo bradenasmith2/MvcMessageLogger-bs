@@ -16,3 +16,47 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+button{
+    float: left;
+}
+
+.submit{
+    padding-right: 15px;
+    padding-left: 15px;
+    border-color: slategray;
+    border-radius: 50px;
+    background-color: aliceblue;
+}
+
+.add-message-input {
+    display: block;
+    height: 130px;
+    width: 90%;
+    border-radius: 25px;
+    border-color: slategray;
+    background-color: aliceblue;
+}
+
+.add-message-label{
+    font-size: 32px;
+}
+
+.add-message-button {
+    float: right;
+    margin-right: 100px;
+    margin-top: 5px;
+    border-radius: 25px;
+    border-color: slategray;
+    background-color: aliceblue;
+    padding-right: 25px;
+    padding-left: 25px;
+    font-size: 18px;
+}
+
+::-webkit-input-placeholder{
+    display: block;
+    float: left;
+    margin-bottom: 90px;
+    margin-left: 10px;
+}

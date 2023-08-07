@@ -1,0 +1,17 @@
+﻿@model User
+
+<h1>@Model.Name</h1>
+<h6>@Model.Username</h6>
+
+<form method="post" action="/users/details/@Model.Id/message">
+    <label class="add-message-label" for="Content">Add a New Message</label>
+    <input class="add-message-input" type="text" name="Content" id="Content" placeholder="Start typing..."/>
+
+    <button class="add-message-button" type="submit">Add Message</button>
+</form>
+
+<h3>Your Messages</h3>
+@foreach(var e in Model.Messages)
+{
+    <p><strong>@e.CreatedAt:</strong> @e.Content</p>
+}
