@@ -1,4 +1,8 @@
-﻿<h1>Create Your Account</h1>
+﻿@{
+    string usernameTaken = ViewData["UsernameTaken"] as string;
+}
+
+<h1>Create Your Account</h1>
 
 <form method="post" action="/users">
 
@@ -12,7 +16,12 @@
         <input type="text" id="Username" name="Username" required placeholder="*"/>
     </div>
 
-    <p>* Indicates required field</p>
+    @if(usernameTaken != null)
+    {
+        <p style="color: red">@usernameTaken</p>
+    }
+
+    <p style="color: palevioletred">* Indicates required field</p>
 
     <div class="submitbutton">
         <button type="submit">Create Account</button>

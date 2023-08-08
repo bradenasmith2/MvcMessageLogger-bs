@@ -2,7 +2,7 @@
 @{
     List<User> users = ViewData["MessageCountDesc"] as List<User>;
     List<string> MostCommonPublic = ViewData["MostCommonPublic"] as List<string>;
-    string ActiveHour = ViewData["Active Hour"] as string;
+    string ActiveHour = ViewData["ActiveHour"] as string;
 }
 
 <h1 style="align-content: center;">Message Logger v1.3</h1>
@@ -34,8 +34,8 @@
             <input type="submit" value="send" />
         }
 
-
-
 <h3>Most Active Hour</h3>
-<p>@ActiveHour</p>
+<p>(In 24hr time)</p>
+
+<h6>@ActiveHour</h6>
 

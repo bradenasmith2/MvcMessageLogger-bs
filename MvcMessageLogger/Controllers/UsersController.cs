@@ -28,21 +28,24 @@ namespace MvcMessageLogger.Controllers
 
         public IActionResult New()
         {
+            ViewData["UsernameTaken"] = TempData["UsernameTaken"];
             return View();
         }
 
         [HttpPost]//CREATE
         public IActionResult Index(User user)
         {
+            if (_context.Users.Any(e => e.Username == user.Username))
+            {
+                TempData["UsernameTaken"] = "That username is already taken, please enter another.";//TempData can be used to transfer data from one controller to the next
+                return RedirectToAction("New");
+            }
+
             _context.Users.Add(user);
             _context.SaveChanges();
 
             return Redirect($"/users/details/{user.Id}");
         }
-
-
-
-
 
         [Route("/users/login")]
         public IActionResult LogInForm()

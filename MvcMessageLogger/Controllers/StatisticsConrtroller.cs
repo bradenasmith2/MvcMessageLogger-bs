@@ -45,27 +45,12 @@ namespace MvcMessageLogger.Controllers
         {
             Statistics stat = new Statistics();
             var wordsList = new List<String>();
-            //var user2 = _context.Users.Where(e => e.Username == UserSelect).Single();//SELECTS USER!
+
             var user = _context.Users.Include(e => e.Messages).Where(e => e.Username == UserSelect).Single();
             //create view data for most common words list, this will also allow the use of a @if(ViewData != null) in View
             //then display.
 
-            //var userMessages = user.Messages.ToList();
-            //foreach (var e in userMessages)
-            //{
-            //    wordsList.AddRange(e.Content.ToLower().Split());
-            //}
-
-            //foreach (var e in wordsList)
-            //{
-            //    Console.WriteLine(e);//this does print: words are getting split properly.
-            //}
-
-            //ViewData["SingleUserCommonWord"] = stat.MostCommonPublic(wordsList);
-
             ViewData["MostCommonPersonal"] = stat.MostCommonPersonal(_context, user);
-
-
             return View();
         }
     }
