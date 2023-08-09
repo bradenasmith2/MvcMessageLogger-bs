@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MvcMessageLogger.DataAccess;
 using MvcMessageLogger.Models;
 using System.Diagnostics;
 
@@ -6,6 +7,7 @@ namespace MvcMessageLogger.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)

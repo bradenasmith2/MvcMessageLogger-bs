@@ -35,6 +35,7 @@ namespace MvcMessageLogger.Controllers
         [HttpPost]//CREATE
         public IActionResult Index(User user)
         {
+            
             if (_context.Users.Any(e => e.Username == user.Username))
             {
                 TempData["UsernameTaken"] = "That username is already taken, please enter another.";//TempData can be used to transfer data from one controller to the next
@@ -83,9 +84,9 @@ namespace MvcMessageLogger.Controllers
 
         [HttpPost]
         [Route("/users/login/attempt")]
-        public IActionResult LogInResult(string Username, string Name)
+        public IActionResult LogInResult(string Username, string Password)
         {
-            if (_context.Users.Any(e => e.Username == Username && _context.Users.Any(e => e.Name == Name)))
+            if (_context.Users.Any(e => e.Username == Username && _context.Users.Any(e => e.Password == Password)))
             {
                 var user = _context.Users.Where(e => e.Username == Username).Single();
 
