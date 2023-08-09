@@ -1,16 +1,28 @@
 ﻿@model List<User> 
 
-<h1>Current Active Users</h1>
-
-@foreach(var e in Model)
-{
-    <form action="/users/details/@e.Id">
-        <button type="submit">Login</button>
-    </form>
-    <h5>@e.Username</h5>
-}
-
-<h3>Don't see your account?</h3>
-<form action="/users/new">
-    <button class="submit" type="submit">Create One!</button>
-</form>
+<br />
+<br />
+<div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
+    <div class="card-header">Current Active Users</div>
+    <div class="card-body">
+        
+        <p class="card-text">
+            <ul>
+            @foreach (var e in Model)
+            {
+                    <li><h5>@e.Username</h5></li>
+            }
+            </ul>
+        </p>
+        <h4 class="card-title">Don't see your account?</h4>
+        <form action="/users/new">
+            <button type="button" class="btn btn-primary">Create One!</button>
+        </form>
+        <!--
+        <p>or</p>
+        <form action="/users/login">
+            <button type="submit" class="btn btn-success" id="create-login-buttons">Login</button>
+        </form>
+        -->
+    </div>
+</div>

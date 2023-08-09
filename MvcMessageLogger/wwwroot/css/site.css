@@ -1,5 +1,6 @@
 html {
   font-size: 14px;
+
 }
 
 @media (min-width: 768px) {
@@ -9,8 +10,8 @@ html {
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -34,8 +35,8 @@ button{
     height: 130px;
     width: 90%;
     border-radius: 25px;
-    border-color: slategray;
-    background-color: aliceblue;
+    border-color: #6C969D;
+    background-color: #F8FCDA;
 }
 
 .add-message-label{
@@ -44,11 +45,11 @@ button{
 
 .add-message-button {
     float: right;
-    margin-right: 100px;
+    margin-right: 10%;
     margin-top: 5px;
     border-radius: 25px;
-    border-color: slategray;
-    background-color: aliceblue;
+    border-color: black;
+    background-color: #F8FCDA;
     padding-right: 25px;
     padding-left: 25px;
     font-size: 18px;
@@ -69,3 +70,88 @@ button{
     display: block;
     float: left;
 }
+
+.gg-comment {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs,1));
+    width: 20px;
+    height: 16px;
+    border: 2px solid;
+    border-bottom: 0;
+    box-shadow: -6px 8px 0 -6px, 6px 8px 0 -6px
+}
+
+.account-buttons {
+    all: unset;
+    float: right;
+    margin-right: 10px;
+    border: solid;
+    border-radius: 25px;
+    border-color: black;
+    background-color: #6C969D;
+    padding-right: 15px;
+    padding-left: 15px;
+    font-size: 18px;
+}
+
+    #delete-button{
+        margin-right: 10%;
+    }
+
+.your-information {
+    display: flex;
+    float: right;
+    
+}
+
+.messages {
+    display: inline-block;
+    margin-top: 30px;
+    width: 50%;
+    height: 400px;
+    padding-right: 30px;
+    padding-top: 20px;
+    background-color: #F8FCDA;
+    border: solid;
+    border-color: black;
+    border-radius: 25px;
+    padding-left: 30px
+}
+
+.your-messages{
+    text-align: center;
+}
+
+.active-users {
+    display: inline-block;
+    margin-top: 30px;
+    width: 50%;
+    height: 400px;
+    padding-right: 30px;
+    padding-top: 20px;
+    background-color: #F8FCDA;
+    border: solid;
+    border-color: black;
+    border-radius: 25px;
+    padding-left: 30px
+}
+
+    .current-active-users{
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+.new-account{
+    display: flex;
+    flex-direction: column;
+    margin-right: 35%;
+    margin-left: 45%;
+}
+
+    .create-your-account{
+        text-align: center;
+        margin-left: 13%
+    }
+    

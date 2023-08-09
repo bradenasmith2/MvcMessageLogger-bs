@@ -2,24 +2,23 @@
     string usernameTaken = ViewData["UsernameTaken"] as string;
 }
 
-<h1>Create Your Account</h1>
 
+<!--
 <form method="post" action="/users">
+    
+    <div class="new-account">
 
-    <div class="form-group">
         <label for="Name">Name: </label>
         <input type="text" id="Name" name="Name" required placeholder="*"/>
-    </div>
 
-    <div class="form-group">
         <label for="Username">Username: </label>
         <input type="text" id="Username" name="Username" required placeholder="*"/>
     </div>
 
-    @if(usernameTaken != null)
+    @*@if(usernameTaken != null)
     {
         <p style="color: red">@usernameTaken</p>
-    }
+    }*@
 
     <p style="color: palevioletred">* Indicates required field</p>
 
@@ -28,4 +27,26 @@
     </div>
 
 </form>
+-->
 
+<h1>Create Your Account</h1>
+<form method="post" action="/users">
+<br />
+<div class="form-group">
+    <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Name">
+    
+    <div class="form-group">
+        <label for="exampleInputPassword1" class="form-label mt-4">Username</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off" name="Username">
+    </div>
+    @if (usernameTaken != null)
+    {
+        <p style="color: red">@usernameTaken</p>
+    }
+    <br />
+        <div class="d-grid gap-2">
+            <button class="btn btn-lg btn-primary" type="submit">Create Account</button>
+        </div>
+</div>
+</form>
