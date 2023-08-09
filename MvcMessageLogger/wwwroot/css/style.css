@@ -4701,9 +4701,10 @@ textarea.form-control-lg {
     --bs-card-bg: var(--bs-body-bg);
     --bs-card-img-overlay-padding: 1rem;
     --bs-card-group-margin: 0.75rem;
-    position: relative;
+    position: inherit;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     min-width: 0;
     height: var(--bs-card-height);
     color: var(--bs-body-color);
@@ -4836,7 +4837,7 @@ textarea.form-control-lg {
 @media (min-width:576px) {
     .card-group {
         display: flex;
-        flex-flow: row wrap
+        flex-flow: row wrap;
     }
 
         .card-group > .card {
