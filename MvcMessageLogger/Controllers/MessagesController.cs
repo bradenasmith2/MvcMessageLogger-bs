@@ -36,7 +36,7 @@ namespace MvcMessageLogger.Controllers
         }
 
         [HttpPost]
-        [Route("/message/{id:int}")]
+        [Route("/messages/{id:int}")]
         public IActionResult Update(int id, Message message)
         {
             message.Id = id;
@@ -45,6 +45,16 @@ namespace MvcMessageLogger.Controllers
 
             var user = _context.Users.Where(e => e.Messages.Contains(message)).ToList().Single();
 
+            return Redirect($"/users/details/{user.Id}");
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var message = _context.Messages.Find(id);
+            var user = _context.Users.Where(e => e.Messages.Contains(message)).ToList().Single();
+            _context.Remove(message);
+            _context.SaveChanges();
             return Redirect($"/users/details/{user.Id}");
         }
     }

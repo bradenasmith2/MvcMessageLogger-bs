@@ -64,48 +64,39 @@ namespace MvcMessageLogger.Controllers
             return Redirect($"/users/details/{user.Id}");
         }
 
-        //[HttpPost]
-        //public IActionResult Delete(int id)
-        //{
-        //    var user = _context.Users.Find(id);
-        //    var userMessages = user.Messages.ToList();
-        //    _context.Messages.RemoveRange(userMessages);
-        //    _context.Users.Remove(user);
-            
-        //    _context.SaveChanges();
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var user = _context.Users.Include(e => e.Messages).Where(e => e.Id == id).Single();
+            _context.Users.Remove(user);
+            _context.SaveChanges();
 
-        //    return Redirect("/users");
-        //}
-
-
-
-
-
-
-
-
-
+            return Redirect("/users");
+        }
 
         [Route("/users/login")]
         public IActionResult LogInForm()
         {
+            ViewData["IncorrectLogin"] = TempData["IncorrectLogin"];
             return View();
         }
 
-        //[HttpPost]
-        //[Route("/users/login/check")]
-        //public IActionResult LogInLogic(string name, string username)
-        //{
-            //var user = _context.Users.Where(e => e.Name == name).Single();
+        [HttpPost]
+        [Route("/users/login/attempt")]
+        public IActionResult LogInResult(string Username, string Name)
+        {
+            if (_context.Users.Any(e => e.Username == Username && _context.Users.Any(e => e.Name == Name)))
+            {
+                var user = _context.Users.Where(e => e.Username == Username).Single();
 
-            //if (user.Name == name)
-            //{
-                //if (user.Username == username)
-                //{
-                   // return Redirect($"/users/{user.Id}");
-                //}
-            //}
-        //}
+                return Redirect($"/users/details/{user.Id}");
+            }
+            else if(_context.Users.Any(e => e.Username != Username))
+            {
+                TempData["IncorrectLogin"] = "Sorry but either the password or username is incorrect, please try again.";
+            }
+            return Redirect("/users/login");
+        }
     }
 }
 

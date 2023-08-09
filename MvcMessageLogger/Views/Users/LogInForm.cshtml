@@ -1,0 +1,26 @@
+﻿@{
+    string incorrect = ViewData["IncorrectLogin"] as string;
+}
+
+<h1>Login</h1>
+
+<form method="post" action="/users/login/attempt">
+    <br />
+    <div class="form-group">
+        <label for="exampleInputEmail1" class="form-label mt-4">Name</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Name">
+
+        <div class="form-group">
+            <label for="exampleInputPassword1" class="form-label mt-4">Username</label>
+            <input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off" name="Username">
+        </div>
+        @if (incorrect != null)
+        {
+            <p style="color: red">@incorrect</p>
+        }
+        <br />
+        <div class="d-grid gap-2">
+            <button class="btn btn-lg btn-primary" type="submit">Login</button>
+        </div>
+    </div>
+</form>
