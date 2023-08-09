@@ -1,0 +1,19 @@
+﻿@{
+    List<string> MostCommonPersonal = ViewData["MostCommonPersonal"] as List<string>;
+}
+
+<form action="/statistics">
+    <button type="submit">Return to Statistics</button>
+</form>
+
+@if(MostCommonPersonal != null && MostCommonPersonal.Count() > 0)
+{
+    @foreach (var e in MostCommonPersonal)
+    {
+        <p>@e</p>
+    }
+}
+else if(MostCommonPersonal.Count == 0)
+{
+    <p>This user currently has no messages.</p>
+}

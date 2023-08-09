@@ -60,3 +60,12 @@ button{
     margin-bottom: 90px;
     margin-left: 10px;
 }
+
+.gg-trash {
+    all: unset;
+    border: solid;
+    border-color: white;
+    background-color: white;
+    display: block;
+    float: left;
+}

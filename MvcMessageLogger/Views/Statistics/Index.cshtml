@@ -1,0 +1,41 @@
+﻿@model List<User>
+@{
+    List<User> users = ViewData["MessageCountDesc"] as List<User>;
+    List<string> MostCommonPublic = ViewData["MostCommonPublic"] as List<string>;
+    string ActiveHour = ViewData["ActiveHour"] as string;
+}
+
+<h1 style="align-content: center;">Message Logger v1.3</h1>
+<h1 style="align-content: center;">Statistics</h1>
+
+<h3 class="message-count-stat">Message Count</h3>
+@foreach(var e in users)
+{
+    <p>@e.Name: @e.Messages.Count()</p>
+}
+
+<h3 class="common-word-stat">Most Common Words</h3>
+@foreach(var e in MostCommonPublic)
+{
+    <p>@e</p>
+}
+
+<h3>Personal Common Words</h3>
+
+    <p>Please select a user</p>
+    @using (Html.BeginForm("Select", "Statistics", FormMethod.Post))
+        {
+            <select id="UserSelect" name="UserSelect">
+                @foreach(var e in Model)
+                    {
+                        <option>@e.Username</option>
+                    }
+            </select>
+            <input type="submit" value="send" />
+        }
+
+<h3>Most Active Hour</h3>
+<p>(In 24hr time)</p>
+
+<h6>@ActiveHour</h6>
+
