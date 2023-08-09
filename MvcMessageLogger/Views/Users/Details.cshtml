@@ -4,6 +4,12 @@
 
 <h1>@Model.Name</h1>
 <h6>@Model.Username</h6>
+<form method="post" action="/users/delete/@Model.Id">
+    <button type="submit" onclick="return confirm('Are you sure you want to delete this bag?')">Delete Account</button>
+</form>
+<form action="/users/edit/@Model.Id">
+    <button type="submit">Edit Account</button>
+</form>
 
 <form method="post" action="/users/details/@Model.Id/message">
     <label class="add-message-label" for="Content">Add a New Message</label>
@@ -20,9 +26,10 @@
     </form>
     
     <p><strong>@e.CreatedAt.ToString("M/d 'at' h:mm"):</strong> @e.Content</p>
-    
+
+    <form action="/messages/edit/@e.Id">
+    <button type="submit">Edit Message</button>
+    </form>
 }
 
-<!--<form action="/users/@Model.Id/messages/edit">
-        <button type="submit"><i class="fal fa-edit fa-xs" style="color: #000000;"></i></button>
-    </form>-->
+

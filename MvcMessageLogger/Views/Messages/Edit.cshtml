@@ -1,0 +1,10 @@
+﻿@model Message
+
+<h1>@Model.CreatedAt</h1>
+
+<form method="post" action="/messages/@Model.Id">
+    <label class="add-message-label" for="Content">Edit Message</label>
+    <input class="add-message-input" type="text" name="Content" id="Content" value="@Model.Content" />
+
+    <button class="add-message-button" type="submit">Save Changes</button>
+</form>

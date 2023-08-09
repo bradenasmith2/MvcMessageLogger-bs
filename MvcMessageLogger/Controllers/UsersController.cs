@@ -47,6 +47,45 @@ namespace MvcMessageLogger.Controllers
             return Redirect($"/users/details/{user.Id}");
         }
 
+        public IActionResult Edit(int id)
+        {
+            var user = _context.Users.Find(id);
+            return View(user);
+        }
+
+        [HttpPost]
+        [Route("/users/Details/{id:int}")]
+        public IActionResult Update(int id, User user)
+        {
+            user.Id = id;
+            _context.Users.Update(user);
+            _context.SaveChanges();
+
+            return Redirect($"/users/details/{user.Id}");
+        }
+
+        //[HttpPost]
+        //public IActionResult Delete(int id)
+        //{
+        //    var user = _context.Users.Find(id);
+        //    var userMessages = user.Messages.ToList();
+        //    _context.Messages.RemoveRange(userMessages);
+        //    _context.Users.Remove(user);
+            
+        //    _context.SaveChanges();
+
+        //    return Redirect("/users");
+        //}
+
+
+
+
+
+
+
+
+
+
         [Route("/users/login")]
         public IActionResult LogInForm()
         {
