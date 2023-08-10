@@ -1,10 +1,8 @@
-﻿@{
+﻿@model User
+@{
     List<string> MostCommonPersonal = ViewData["MostCommonPersonal"] as List<string>;
 }
-
-<form action="/statistics">
-    <button type="submit">Return to Statistics</button>
-</form>
+<h1>@Model.Username's Most Common Words</h1>
 
 @if(MostCommonPersonal != null && MostCommonPersonal.Count() > 0)
 {
@@ -17,3 +15,7 @@ else if(MostCommonPersonal.Count == 0)
 {
     <p>This user currently has no messages.</p>
 }
+
+<form action="/statistics">
+    <button type="submit" class="btn btn-info">Back to Statistics</button>
+</form>

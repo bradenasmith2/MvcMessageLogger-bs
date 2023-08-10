@@ -65,10 +65,6 @@ namespace MvcMessageLogger.Models
                 w += word.Value.ToString();//adding the value to the string
                 returnPhrase.Add(w);//should be word : 4
             }
-            foreach (var e in returnPhrase)//not working
-            {
-                Console.WriteLine(e); //this wil print the personal common word properly, but when the method is invoked, it does not print properly.
-            }
 
             return returnPhrase;
         }

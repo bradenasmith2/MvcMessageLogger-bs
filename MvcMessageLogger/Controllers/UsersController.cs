@@ -16,6 +16,7 @@ namespace MvcMessageLogger.Controllers
 
         public IActionResult Index()
         {
+            ViewData["random"] = TempData["random"];
             var users = _context.Users.ToList();
             return View(users);
         }
@@ -97,6 +98,14 @@ namespace MvcMessageLogger.Controllers
                 TempData["IncorrectLogin"] = "Sorry but either the password or username is incorrect, please try again.";
             }
             return Redirect("/users/login");
+        }
+
+        public IActionResult Generate()
+        {
+            Random rdm = new Random();
+            var messages = _context.Messages.ToList();
+            TempData["random"] = messages[rdm.Next(messages.Count)].Content;
+            return Redirect("/users");
         }
     }
 }

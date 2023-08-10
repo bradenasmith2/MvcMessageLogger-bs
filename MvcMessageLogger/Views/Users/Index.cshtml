@@ -1,7 +1,15 @@
 ﻿@model List<User> 
 
+@{
+    string message = ViewData["random"] as string;
+}
+
 <br />
 <br />
+@if(message != null)
+{
+    <p style="float: right; margin-right: 20%;">@message</p>
+}
 <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
     <div class="card-header">Current Active Users</div>
     <div class="card-body">
@@ -16,13 +24,13 @@
         </p>
         <h4 class="card-title">Don't see your account?</h4>
         <form action="/users/new">
-            <button type="button" class="btn btn-primary">Create One!</button>
+            <button type="submit" class="btn btn-primary">Create One!</button>
         </form>
-        <!--
-        <p>or</p>
-        <form action="/users/login">
-            <button type="submit" class="btn btn-success" id="create-login-buttons">Login</button>
-        </form>
-        -->
+
+        
     </div>
 </div>
+
+<form action="/users/generate">
+    <button type="submit" class="btn btn-primary" style="float: right; margin-right: 12%;">Generate Random Message</button>
+</form>

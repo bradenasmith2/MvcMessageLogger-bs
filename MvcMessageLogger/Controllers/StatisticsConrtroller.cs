@@ -36,6 +36,7 @@ namespace MvcMessageLogger.Controllers
             ViewData["MostCommonPublic"] = stat.MostCommonPublic(wordsList2);
             ViewData["ActiveHour"] = stat.ActiveHour(_context);
             ViewData["MessageCountDesc"] = stat.MessageCountDescUser(_context);
+
             return View(users);
         }
 
@@ -51,7 +52,8 @@ namespace MvcMessageLogger.Controllers
             //then display.
 
             ViewData["MostCommonPersonal"] = stat.MostCommonPersonal(_context, user);
-            return View();
+
+            return View(user);
         }
     }
 }
