@@ -3,10 +3,11 @@
     List<User> users = ViewData["MessageCountDesc"] as List<User>;
     List<string> MostCommonPublic = ViewData["MostCommonPublic"] as List<string>;
     string ActiveHour = ViewData["ActiveHour"] as string;
+    List<string> MostCommonPersonal = ViewData["CommonPersonal"] as List<string>;
 }
 
-<h1 style="align-content: center;">Message Logger v1.3</h1>
-<h1 style="align-content: center;">Statistics</h1>
+<h1 style="text-align: center;">Message Logger v1.3</h1>
+<h1 style="text-align: center;">Statistics</h1>
 
 
 <div class="card-group">
@@ -33,7 +34,6 @@
     </div>
 </div>
 
-
 <div class="card text-white bg-secondary mb-3" style="max-width: 20rem;">
     <div class="card-header">Most Common Word For:</div>
     <div class="card-body">
@@ -47,8 +47,16 @@
                     }
             </select>
 
-                    <input type="submit" value="send" data-bs-dismiss="alert" />
-            }</p>
+                    <input type="submit" value="Submit" data-bs-dismiss="alert" />
+            }
+
+            @if(MostCommonPersonal != null)
+            {
+                @foreach(var e in MostCommonPersonal)
+                {
+                    <p>@e</p>
+                }
+            }
     </div>
 </div>
 
