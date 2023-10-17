@@ -32,7 +32,7 @@
 * Created statistics based on user's messages, such as the most common word used across all users messages.
 
 * Lastly, this is a page I made with no bootstrap or preset HTML classes and minimal CSS knowledge, and the page I'm most proud of:
-![User's Show Page]()
+![User's Show Page](https://github.com/bradenasmith2/MvcMessageLogger-bs/blob/main/MvcMessageLogger/wwwroot/dcc782d98f4a0aec6a56b3c9eba3be44.png)
 
 ### 🙃 Challenges 
 * The largest challenge I ran into was cleanly merging the bootstrap with my custom CSS
